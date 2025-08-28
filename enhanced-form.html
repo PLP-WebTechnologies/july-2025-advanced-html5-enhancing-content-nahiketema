@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic metadata for accessibility and responsiveness -->
+  <meta charset="utf-8" /> <!-- Ensures correct character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Mobile-friendly scaling -->
+  <title>Enhanced Content and HTML5 Form</title> <!-- Page title for browsers and assistive tech -->
+  <style>
+    /* Simple, readable layout without JS, focuses on clarity and contrast */
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, Arial, sans-serif; margin: 0 auto; max-width: 960px; padding: 1.25rem; line-height: 1.5; }
+    header, main, footer { margin-block: 1rem; }
+    header h1 { margin: 0 0 .25rem 0; }
+    nav ul { display: flex; gap: 1rem; padding: 0; list-style: none; }
+    section { margin-block: 1.25rem; }
+    figure { margin: 0; }
+    img, video, audio { max-width: 100%; height: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
+    th, td { border: 1px solid currentColor; padding: .5rem; text-align: left; }
+    tbody tr:nth-child(odd) { background: color-mix(in srgb, currentColor 8%, transparent); }
+    fieldset { border: 1px solid currentColor; padding: .75rem; margin-bottom: 1rem; }
+    legend { font-weight: 600; }
+    label { display: inline-block; margin-top: .5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem 1rem; }
+    input, select, textarea, button { width: 100%; padding: .55rem; font: inherit; }
+    .inline { width: auto; display: inline-block; }
+    .help { font-size: .9rem; opacity: .8; }
+    .required::after { content: " *"; color: crimson; }
+  </style>
+</head>
+<body>
+  <!-- Accessible page header with simple navigation -->
+  <header>
+    <h1>Enhanced HTML5 Content Demo</h1> <!-- Describes page purpose -->
+    <p class="help">Lists, tables, media, then a complete validated form.</p> <!-- Short summary for context -->
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#form">Registration Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Lists section shows ordered, unordered, and description lists -->
+    <section id="lists" aria-labelledby="lists-h">
+      <h2 id="lists-h">Curated Resources</h2> <!-- Heading linked by aria-labelledby -->
+      <div class="grid">
+        <article>
+          <h3>Top Skills</h3>
+          <ul>
+            <li>Semantic HTML</li>
+            <li>Accessible forms</li>
+            <li>Responsive layout</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Learning Path</h3>
+          <ol>
+            <li>Basics of structure</li>
+            <li>Forms and validation</li>
+            <li>Media and accessibility</li>
+          </ol>
+        </article>
+
+        <article>
+          <h3>Key Terms</h3>
+          <dl>
+            <dt>ARIA</dt>
+            <dd>Attributes that add semantic info for assistive tech.</dd>
+            <dt>Constraint validation</dt>
+            <dd>Native HTML checks without JavaScript.</dd>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- Table with proper semantics and caption for accessibility -->
+    <section id="table" aria-labelledby="table-h">
+      <h2 id="table-h">Weekly Study Schedule</h2>
+      <p class="help">A simple timetable with scope, header cells, and caption.</p>
+      <figure>
+        <figcaption class="help">Hover to see tooltips with session focus.</figcaption>
+        <table>
+          <caption>Study plan for one week</caption>
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Topic</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Mon</th>
+              <td title="Semantic tags and landmarks">HTML structure</td>
+              <td>2h</td>
+              <td>Review headings, sections, landmarks</td>
+            </tr>
+            <tr>
+              <th scope="row">Wed</th>
+              <td title="Constraint validation API via attributes">Forms</td>
+              <td>2h</td>
+              <td>Inputs, labels, validation</td>
+            </tr>
+            <tr>
+              <th scope="row">Fri</th>
+              <td title="Audio Video Track Picture">Media</td>
+              <td>1.5h</td>
+              <td>Embed and caption media</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td>3 topics</td>
+              <td>5.5h</td>
+              <td>Stay consistent</td>
+            </tr>
+          </tfoot>
+        </table>
+      </figure>
+    </section>
+
+    <!-- Media with semantic elements, captions, and fallbacks -->
+    <section id="media" aria-labelledby="media-h">
+      <h2 id="media-h">Media Showcase</h2>
+
+      <!-- Responsive image with alt and caption -->
+      <figure>
+        <picture>
+          <!-- Uses modern format first, then falls back -->
+          <source srcset="https://picsum.photos/seed/learn/960/540.webp" type="image/webp" />
+          <img src="https://picsum.photos/seed/learn/960/540.jpg" alt="Abstract learning themed banner with shapes" loading="lazy" />
+        </picture>
+        <figcaption class="help">Responsive image served with picture and alt text.</figcaption>
+      </figure>
+
+      <!-- Video with controls, captions track, and fallback text -->
+      <figure>
+        <video controls width="640" poster="https://picsum.photos/seed/poster/640/360" preload="metadata">
+        
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+          <track kind="captions" srclang="en" label="English" default
+                 src="data:text/vtt;charset=utf-8,WEBVTT%0A%0A00:00.000%20--%3E%2000:02.000%0ADemo%20video%20clip%0A" />
+          Your browser does not support the video element.
+        </video>
+        <figcaption class="help">Video with captions track for accessibility.</figcaption>
+      </figure>
+
+      <!-- Audio with controls and fallback -->
+      <figure>
+        <audio controls preload="none">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+        <figcaption class="help">Audio sample with native controls.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Complete, accessible HTML5 form using validation attributes -->
+    <section id="form" aria-labelledby="form-h">
+      <h2 id="form-h">Registration Form</h2>
+      <p class="help">All fields use native HTML5 validation. No JavaScript needed.</p>
+
+      <!-- form with method and action placeholders -->
+      <form action="#" method="post" novalidate>
+        <!-- Personal info fieldset -->
+        <fieldset>
+          <legend>Personal Information</legend>
+          <div class="grid">
+            <div>
+              <label class="required" for="first">First name</label>
+              <input id="first" name="first" type="text" placeholder="Alex" autocomplete="given-name" required minlength="2" />
+            </div>
+
+            <div>
+              <label class="required" for="last">Last name</label>
+              <input id="last" name="last" type="text" placeholder="Johnson" autocomplete="family-name" required minlength="2" />
+            </div>
+
+            <div>
+              <label class="required" for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="alex@example.com" autocomplete="email" required />
+            </div>
+
+            <div>
+              <label class="required" for="phone">Phone</label>
+              <!-- pattern accepts 10 to 15 digits with optional spaces -->
+              <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="+1 555 123 4567" autocomplete="tel"
+                     required pattern="^[+]?[\d\s]{10,15}$" />
+              <small class="help">Digits and spaces only, 10 to 15 characters.</small>
+            </div>
+
+            <div>
+              <label for="dob">Date of birth</label>
+              <input id="dob" name="dob" type="date" autocomplete="bday" />
+            </div>
+
+            <div>
+              <label class="required" for="country">Country</label>
+              <select id="country" name="country" autocomplete="country" required>
+                <option value="" selected disabled>Select your country</option>
+                <option>Kenya</option>
+                <option>Nigeria</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+                <option>India</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Account details -->
+        <fieldset>
+          <legend>Account Security</legend>
+          <div class="grid">
+            <div>
+              <label class="required" for="username">Username</label>
+              <input id="username" name="username" type="text" placeholder="alexj" minlength="3" maxlength="20"
+                     required pattern="^[a-zA-Z0-9_]{3,20}$" autocomplete="username" />
+              <small class="help">Letters, numbers, underscore, 3 to 20 chars.</small>
+            </div>
+
+            <div>
+              <label class="required" for="password">Password</label>
+              <!-- At least 8 chars, one letter, one digit -->
+              <input id="password" name="password" type="password" placeholder="Min 8 chars" required
+                     minlength="8" autocomplete="new-password"
+                     pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$" />
+              <small class="help">Min 8, include a letter and a number.</small>
+            </div>
+
+            <div>
+              <label class="required" for="confirm">Confirm password</label>
+              <!-- No JS cross-field check, but use same pattern and title for guidance -->
+              <input id="confirm" name="confirm" type="password" placeholder="Repeat password" required
+                     minlength="8" autocomplete="new-password"
+                     pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$" title="Re-enter the exact same password" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Preferences and choices -->
+        <fieldset>
+          <legend>Preferences</legend>
+          <div class="grid">
+            <div>
+              <label for="role">Role</label>
+              <input id="role" name="role" list="role-list" placeholder="Select or type" />
+              <datalist id="role-list">
+                <option value="Student"></option>
+                <option value="Instructor"></option>
+                <option value="Developer"></option>
+              </datalist>
+            </div>
+
+            <div>
+              <label for="color">Favorite color</label>
+              <input id="color" name="color" type="color" value="#4f46e5" />
+            </div>
+
+            <div>
+              <label for="range">Weekly study hours</label>
+              <input id="range" name="study_hours" type="range" min="0" max="40" value="10" />
+            </div>
+
+            <div>
+              <label class="required" for="time">Preferred time</label>
+              <input id="time" name="time" type="time" required />
+            </div>
+
+            <div>
+              <label for="site">Portfolio URL</label>
+              <input id="site" name="site" type="url" placeholder="https://example.com" autocomplete="url" />
+            </div>
+
+            <div>
+              <label for="resume">Resume PDF</label>
+              <input id="resume" name="resume" type="file" accept=".pdf,application/pdf" />
+            </div>
+          </div>
+
+          <!-- Radios share same name for exclusive choice -->
+          <fieldset>
+            <legend>Newsletter frequency</legend>
+            <label><input class="inline" type="radio" name="news" value="weekly" required /> Weekly</label>
+            <label><input class="inline" type="radio" name="news" value="monthly" /> Monthly</label>
+            <label><input class="inline" type="radio" name="news" value="never" /> Never</label>
+          </fieldset>
+
+          <!-- Checkboxes allow multiples -->
+          <fieldset>
+            <legend>Topics of interest</legend>
+            <label><input class="inline" type="checkbox" name="topics" value="html" /> HTML</label>
+            <label><input class="inline" type="checkbox" name="topics" value="css" /> CSS</label>
+            <label><input class="inline" type="checkbox" name="topics" value="a11y" /> Accessibility</label>
+          </fieldset>
+
+          <label for="about">Short bio</label>
+          <textarea id="about" name="about" rows="4" maxlength="300" placeholder="Tell us a bit about you"></textarea>
+        </fieldset>
+
+        <!-- Readonly and hidden examples -->
+        <fieldset>
+          <legend>Submission</legend>
+          <div class="grid">
+            <div>
+              <label for="ref">Reference code</label>
+              <input id="ref" name="ref" type="text" value="PLP-ENH-2025" readonly />
+            </div>
+            <div>
+              <label for="agree" class="required">Terms</label>
+              <label>
+                <input id="agree" name="agree" type="checkbox" class="inline" required />
+                I agree to the terms and privacy policy
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <!-- Submit area -->
+        <p class="help">Required fields are marked with an asterisk.</p>
+        <button type="submit">Create account</button>
+        <button type="reset" class="inline">Reset</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <time datetime="2025">2025</time> Enhanced HTML5 Demo. All rights reserved.</small>
+  </footer>
+</body>
+</html>
